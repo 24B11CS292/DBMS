@@ -1,0 +1,61 @@
+CREATE TABLE Department (
+  DeptID INT PRIMARY KEY,
+  DeptName VARCHAR(50)
+);
+
+CREATE TABLE Student (
+  StudentID INT PRIMARY KEY,
+  StudentName VARCHAR(50),
+  DeptID INT,
+  FOREIGN KEY (DeptID) REFERENCES Department(DeptID)
+);
+
+CREATE TABLE Course (
+  CourseID INT PRIMARY KEY,
+  CourseName VARCHAR(50),
+  DeptID INT,
+  FOREIGN KEY (DeptID) REFERENCES Department(DeptID)
+);
+
+CREATE TABLE Instructor (
+  InstructorID INT PRIMARY KEY,
+  InstructorName VARCHAR(50),
+  DeptID INT,
+  FOREIGN KEY (DeptID) REFERENCES Department(DeptID)
+);
+
+CREATE TABLE Enrollment (
+  StudentID INT,
+  CourseID INT,
+  Grade CHAR(2),
+  PRIMARY KEY (StudentID, CourseID),
+  FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+  FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
+);
+
+CREATE TABLE Teaches (
+  InstructorID INT,
+  CourseID INT,
+  Semester VARCHAR(10),
+  Year INT,
+  PRIMARY KEY (InstructorID, CourseID, Semester, Year),
+  FOREIGN KEY (InstructorID) REFERENCES Instructor(InstructorID),
+  FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
+);
+INSERT INTO Department VALUES (1,'Computer Science');
+INSERT INTO Department VALUES (2,'Mathematics');
+
+INSERT INTO Student VALUES (101,'Amit',1);
+INSERT INTO Student VALUES (102,'Priya',2);
+
+INSERT INTO Course VALUES (501,'DBMS',1);
+INSERT INTO Course VALUES (502,'Calculus',2);
+
+INSERT INTO Instructor VALUES (301,'Dr. Rao',1);
+INSERT INTO Instructor VALUES (302,'Dr. Mehta',2);
+
+INSERT INTO Enrollment VALUES (101,501,'A');
+INSERT INTO Enrollment VALUES (102,502,'B');
+
+INSERT INTO Teaches VALUES (301,501,'Fall',2025);
+INSERT INTO Teaches VALUES (302,502,'Spring',2025);
