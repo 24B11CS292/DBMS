@@ -1,0 +1,28 @@
+-- Natural Join
+SELECT StudentID, StudentName, DeptName
+FROM Student NATURAL JOIN Department;
+
+-- Equi Join
+SELECT s.StudentID, s.StudentName, d.DeptName
+FROM Student s, Department d
+WHERE s.DeptID = d.DeptID;
+
+-- Inner Join
+SELECT s.StudentID, s.StudentName, d.DeptName
+FROM Student s
+INNER JOIN Department d ON s.DeptID = d.DeptID;
+
+-- Left Outer Join
+SELECT s.StudentID, s.StudentName, d.DeptName
+FROM Student s
+LEFT JOIN Department d ON s.DeptID = d.DeptID;
+
+-- Right Outer Join
+SELECT s.StudentID, s.StudentName, d.DeptName
+FROM Student s
+RIGHT JOIN Department d ON s.DeptID = d.DeptID;
+
+-- Full Outer Join (if supported)
+SELECT s.StudentID, s.StudentName, d.DeptName
+FROM Student s
+FULL OUTER JOIN Department d ON s.DeptID = d.DeptID;
