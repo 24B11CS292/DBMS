@@ -1,0 +1,17 @@
+-- Create View
+CREATE VIEW StudentGrades AS
+SELECT s.StudentID, s.StudentName, e.CourseID, e.Grade
+FROM Student s
+JOIN Enrollment e ON s.StudentID = e.StudentID;
+
+-- Query View
+SELECT * FROM StudentGrades WHERE Grade = 'A';
+
+-- Materialized View (if supported by DBMS)
+CREATE MATERIALIZED VIEW DeptSummary AS
+SELECT DeptID, COUNT(*) AS TotalStudents
+FROM Student
+GROUP BY DeptID;
+
+-- Query Materialized View
+SELECT * FROM DeptSummary;
