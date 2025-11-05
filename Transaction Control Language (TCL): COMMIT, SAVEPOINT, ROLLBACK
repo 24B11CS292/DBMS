@@ -1,0 +1,17 @@
+-- Start a transaction
+BEGIN;
+
+-- Insert a new student
+INSERT INTO Students VALUES (104,'Ravi','Physics');
+
+-- Create a savepoint
+SAVEPOINT sp1;
+
+-- Insert another student
+INSERT INTO Students VALUES (105,'Sneha','Chemistry');
+
+-- Rollback to savepoint (undo Sneha's insert)
+ROLLBACK TO sp1;
+
+-- Commit the transaction (Ravi's insert is saved)
+COMMIT;
