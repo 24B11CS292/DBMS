@@ -1,0 +1,5 @@
+-- Grant SELECT and INSERT privileges on Students table to user 'userA'
+GRANT SELECT, INSERT ON Students TO userA;
+
+-- Revoke INSERT privilege from user 'userA'
+REVOKE INSERT ON Students FROM userA;
