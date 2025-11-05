@@ -1,0 +1,29 @@
+-- Students(StudentID, StudentName, Major)
+-- Courses(CourseID, CourseName, Credits)
+-- Enrollments(StudentID, CourseID, EnrollmentDate)
+-- Instructors(InstructorID, InstructorName, Phone)
+
+--1. List all students and their enrolled course--
+SELECT s.StudentID, s.StudentName, c.CourseName, e.EnrollmentDate
+FROM Students s
+JOIN Enrollments e ON s.StudentID = e.StudentID
+JOIN Courses c ON e.CourseID = c.CourseID;
+--2. Find students enrolled after a specific date--
+SELECT s.StudentName, e.EnrollmentDate
+FROM Students s
+JOIN Enrollments e ON s.StudentID = e.StudentID
+WHERE e.EnrollmentDate > '2025-01-01';
+-- 3. Count how many students are enrolled in each course--
+SELECT c.CourseName, COUNT(e.StudentID) AS TotalEnrolled
+FROM Courses c
+LEFT JOIN Enrollments e ON c.CourseID = e.CourseID
+GROUP BY c.CourseName;
+--4. List instructors with their contact detail--
+SELECT InstructorName, Phone
+FROM Instructors;
+--5. Show total credits for each student--
+SELECT s.StudentID, s.StudentName, SUM(c.Credits) AS TotalCredits
+FROM Students s
+JOIN Enrollments e ON s.StudentID = e.StudentID
+JOIN Courses c ON e.CourseID = c.CourseID
+GROUP BY s.StudentID, s.StudentName;
