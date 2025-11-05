@@ -1,0 +1,10 @@
+-- Total students per department
+SELECT DeptID, COUNT(*) AS TotalStudents
+FROM Student
+GROUP BY DeptID;
+
+-- Departments with more than 5 students
+SELECT DeptID, COUNT(*) AS TotalStudents
+FROM Student
+GROUP BY DeptID
+HAVING COUNT(*) > 5;
