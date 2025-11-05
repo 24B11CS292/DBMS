@@ -1,0 +1,50 @@
+
+-- **Practice Question 1: Familiarization with Installation of Any DBMS**
+
+**Answer:**
+
+To install a DBMS like MySQL:
+
+1. **Download Installer:**
+   - Visit the official MySQL website and download the installer for your OS.
+
+2. **Run Setup:**
+   - Launch the installer and choose “Developer Default” for full feature set.
+
+3. **Configure Server:**
+   - Set port (default: 3306), choose authentication method, and set root password.
+
+4. **Install Workbench (Optional):**
+   - GUI tool for managing databases, writing queries, and visualizing schemas.
+
+5. **Verify Installation:**
+   - Open terminal or command prompt and run:  
+     ```
+     mysql -u root -p
+     ```
+   - Enter password to access MySQL shell.
+
+6. **Create Sample Database:**
+   ```sql
+   CREATE DATABASE university;
+   ```
+
+---
+
+### 📘 **Next Module: Database Design**
+
+#### 🔍 **Key Concepts**
+
+- **Entity:** Real-world object (e.g., Student, Course)
+- **Attribute:** Property of entity (e.g., StudentName, CourseID)
+- **Relationship:** Association between entities (e.g., Enrolls)
+
+#### 🧠 **Enhanced ER Concepts**
+- **Generalization:** Combining similar entities into a superclass
+- **Specialization:** Splitting an entity into sub-entities
+- **Aggregation:** Modeling a relationship as an entity
+
+#### 🔁 **Mapping ER to Relational Model**
+- Entities → Tables  
+- Attributes → Columns  
+- Relationships → Foreign Keys
