@@ -1,0 +1,18 @@
+-- Primary Index (automatically created on primary key)
+CREATE TABLE Students (
+  StudentID INT PRIMARY KEY,
+  StudentName VARCHAR(50),
+  Major VARCHAR(50)
+);
+
+-- Secondary Index (manual creation on non-key column)
+CREATE INDEX idx_major ON Students(Major);
+-- Query using indexed column
+SELECT StudentName FROM Students WHERE Major = 'Physics';
+-- Insert new student
+INSERT INTO Students VALUES (106,'Neha','Physics');
+
+-- Update indexed column
+UPDATE Students SET Major = 'Mathematics' WHERE StudentID = 106;
+-- Delete student record
+DELETE FROM Students WHERE StudentID = 106;
