@@ -1,0 +1,11 @@
+-- Select
+SELECT * FROM Student;
+
+-- Insert
+INSERT INTO Student VALUES (103,'Kiran',1);
+
+-- Update
+UPDATE Student SET StudentName='Kiran Kumar' WHERE StudentID=103;
+
+-- Delete
+DELETE FROM Student WHERE StudentID=103;
