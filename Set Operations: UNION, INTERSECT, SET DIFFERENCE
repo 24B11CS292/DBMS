@@ -1,0 +1,14 @@
+-- UNION
+SELECT StudentID FROM Enrollment
+UNION
+SELECT StudentID FROM StudentPhone;
+
+-- INTERSECT (if supported)
+SELECT StudentID FROM Enrollment
+INTERSECT
+SELECT StudentID FROM StudentPhone;
+
+-- SET DIFFERENCE (EXCEPT)
+SELECT StudentID FROM Student
+EXCEPT
+SELECT StudentID FROM Enrollment;
