@@ -1,0 +1,45 @@
+CREATE TABLE Sailors (
+    sid INT PRIMARY KEY,
+    sname VARCHAR(50),
+    age INT,
+    rating INT
+);
+
+CREATE TABLE Boats (
+    bid INT PRIMARY KEY,
+    bname VARCHAR(50),
+    bcolor VARCHAR(20)
+);
+
+CREATE TABLE Reserves (
+    sid INT,
+    bid INT,
+    rdate DATE,
+    PRIMARY KEY (sid, bid, rdate),
+    FOREIGN KEY (sid) REFERENCES Sailors(sid),
+    FOREIGN KEY (bid) REFERENCES Boats(bid)
+);
+-- Sailors
+INSERT INTO Sailors VALUES (1, 'John', 25, 7);
+INSERT INTO Sailors VALUES (2, 'Alice', 30, 8);
+INSERT INTO Sailors VALUES (3, 'Bob', 22, 6);
+INSERT INTO Sailors VALUES (4, 'Diana', 28, 9);
+
+-- Boats
+INSERT INTO Boats VALUES (101, 'SeaQueen', 'red');
+INSERT INTO Boats VALUES (102, 'WaveRider', 'green');
+INSERT INTO Boats VALUES (103, 'OceanStar', 'blue');
+INSERT INTO Boats VALUES (104, 'WindSurfer', 'red');
+
+-- Reserves
+INSERT INTO Reserves VALUES (1, 101, '2023-06-01');
+INSERT INTO Reserves VALUES (1, 102, '2023-06-02');
+INSERT INTO Reserves VALUES (2, 101, '2023-06-03');
+INSERT INTO Reserves VALUES (2, 103, '2023-06-04');
+INSERT INTO Reserves VALUES (3, 102, '2023-06-05');
+INSERT INTO Reserves VALUES (4, 104, '2023-06-06');
+SELECT DISTINCT S.sname
+FROM Sailors S
+JOIN Reserves R ON S.sid = R.sid
+JOIN Boats B ON R.bid = B.bid
+WHERE B.bcolor = 'red' OR B.bcolor = 'green';
