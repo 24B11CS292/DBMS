@@ -1,0 +1,14 @@
+-- Nested Subquery
+SELECT StudentName
+FROM Student
+WHERE StudentID IN (
+  SELECT StudentID FROM Enrollment WHERE Grade = 'A'
+);
+
+-- Correlated Subquery
+SELECT StudentName
+FROM Student s
+WHERE EXISTS (
+  SELECT 1 FROM Enrollment e
+  WHERE e.StudentID = s.StudentID AND e.Grade = 'A'
+);
